@@ -29,7 +29,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.github.insanusmokrassar:AutoORM:0.7'
+    compile ('com.github.insanusmokrassar:AutoORM:0.7') {
+        exclude group: 'com.intellij', module: 'annotations'
+    }
     testCompile 'junit:junit:4.12'
 }
 
