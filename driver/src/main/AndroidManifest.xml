@@ -1,7 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
-          package="com.github.insanusmokrassar.androidsqlautoormdriver"
-    >
+          package="com.github.insanusmokrassar.androidsqlautoormdriver">
 
     <application
         android:allowBackup="true"
