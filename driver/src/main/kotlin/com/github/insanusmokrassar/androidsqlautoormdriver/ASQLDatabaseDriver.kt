@@ -3,22 +3,34 @@ package com.github.insanusmokrassar.androidsqlautoormdriver
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.DatabaseConnect
 import com.github.insanusmokrassar.AutoORM.core.drivers.databases.interfaces.DatabaseDriver
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
 import kotlin.reflect.KClass
 
-class ASQLDatabaseDriver(parameters: IObject<Any>) : DatabaseDriver, SQLiteOpenHelper(Context::class.objectInstance, parameters.get<String>("name"), null, parameters.get<Int>("version")) {
+class ASQLDatabaseDriver(val parameters: IObject<Any>) : DatabaseDriver, SQLiteOpenHelper(parameters.get<Context>("context"), parameters.get<String>("name"), null, parameters.get<Int>("version")) {
     override fun onCreate(db: SQLiteDatabase?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (parameters.keys().contains("prepare")) {
+            val modelToPrepare = parameters.get<List<Any>>("prepare")
+            modelToPrepare.forEach {
+                val currentModelClass = Class.forName(it as String).kotlin
+                createTableIfNotExist(currentModelClass, db!!)
+            }
+        }
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(this::class.simpleName, "For some of reason was called onUpgrade with old versiont $oldVersion and new version $newVersion")
     }
 
     override fun getDatabaseConnect(params: IObject<Any>, onFreeCallback: (DatabaseConnect) -> Unit, onCloseCallback: (DatabaseConnect) -> Unit): DatabaseConnect {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return DatabaseConnect(
+                ASQLTableDriver(readableDatabase, writableDatabase),
+                ASQLTransactable(writableDatabase),
+                onFreeCallback,
+                onCloseCallback
+        )
     }
 
     override fun supportTable(modelClass: KClass<*>): Boolean {
