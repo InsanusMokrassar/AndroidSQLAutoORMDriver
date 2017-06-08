@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.DatabaseConnect
-import com.github.insanusmokrassar.AutoORM.core.drivers.databases.interfaces.DatabaseDriver
+import com.github.insanusmokrassar.AutoORM.core.drivers.databases.interfaces.DatabaseProvider
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
 import kotlin.reflect.KClass
 
-class ASQLDatabaseDriver(val parameters: IObject<Any>) : DatabaseDriver, SQLiteOpenHelper(parameters.get<Context>("context"), parameters.get<String>("name"), null, parameters.get<Int>("version")) {
+class ASQLDatabaseProvider(val parameters: IObject<Any>) : DatabaseProvider, SQLiteOpenHelper(parameters.get<Context>("context"), parameters.get<String>("name"), null, parameters.get<Int>("version")) {
     override fun onCreate(db: SQLiteDatabase?) {
         if (parameters.keys().contains("prepare")) {
             val modelToPrepare = parameters.get<List<Any>>("prepare")
@@ -26,7 +26,7 @@ class ASQLDatabaseDriver(val parameters: IObject<Any>) : DatabaseDriver, SQLiteO
 
     override fun getDatabaseConnect(params: IObject<Any>, onFreeCallback: (DatabaseConnect) -> Unit, onCloseCallback: (DatabaseConnect) -> Unit): DatabaseConnect {
         return DatabaseConnect(
-                ASQLTableDriver(readableDatabase, writableDatabase),
+                ASQLConnectionProvider(readableDatabase, writableDatabase),
                 ASQLTransactable(writableDatabase),
                 onFreeCallback,
                 onCloseCallback

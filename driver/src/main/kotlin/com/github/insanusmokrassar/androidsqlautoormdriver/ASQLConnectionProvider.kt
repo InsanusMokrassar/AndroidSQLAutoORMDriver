@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.androidsqlautoormdriver
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.*
-import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.TableDriver
+import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.ConnectionProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.TableProvider
 import java.util.logging.Logger
 import kotlin.reflect.KClass
@@ -35,9 +35,9 @@ val nativeTypesMap = mapOf(
         )
 )
 
-class ASQLTableDriver(
+class ASQLConnectionProvider(
         val roDB: SQLiteDatabase,
-        val woDB: SQLiteDatabase): TableDriver {
+        val woDB: SQLiteDatabase): ConnectionProvider {
     override fun close() {
         roDB.close()
         woDB.close()
