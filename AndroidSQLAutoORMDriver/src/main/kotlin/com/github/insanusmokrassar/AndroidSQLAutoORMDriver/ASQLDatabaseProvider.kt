@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -8,7 +8,6 @@ import com.github.insanusmokrassar.AutoORM.core.DatabaseConnect
 import com.github.insanusmokrassar.AutoORM.core.drivers.databases.interfaces.DatabaseProvider
 import com.github.insanusmokrassar.IObjectKRealisations.JSONIObject
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
-import java.io.InputStreamReader
 import java.util.*
 import kotlin.reflect.KClass
 

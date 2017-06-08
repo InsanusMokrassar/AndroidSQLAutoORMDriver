@@ -1,11 +1,10 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.*
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.ConnectionProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.TableProvider
-import java.util.logging.Logger
 import kotlin.reflect.KClass
 
 val nativeTypesMap = mapOf(

@@ -2,14 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 
-group = 'com.github.insanusmokrassar'
-version = '1.0'
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.github.insanusmokrassar.androidsqlautoormdriver"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1

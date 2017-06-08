@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver;
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

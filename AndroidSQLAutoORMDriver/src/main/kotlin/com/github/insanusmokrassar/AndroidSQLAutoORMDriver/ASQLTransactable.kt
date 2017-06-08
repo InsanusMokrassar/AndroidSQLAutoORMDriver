@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 
 import android.database.sqlite.SQLiteDatabase
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.Transactable

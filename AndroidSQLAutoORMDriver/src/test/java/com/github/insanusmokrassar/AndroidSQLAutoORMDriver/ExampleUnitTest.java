@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver;
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.androidsqlautoormdriver
+package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
@@ -6,7 +6,6 @@ import com.github.insanusmokrassar.AutoORM.core.asSQLString
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.SearchQuery
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.abstracts.AbstractTableProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.filters.Filter
-import com.github.insanusmokrassar.AutoORM.core.isLast
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
