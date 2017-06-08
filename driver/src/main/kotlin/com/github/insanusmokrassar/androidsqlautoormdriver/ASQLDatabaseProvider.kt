@@ -6,7 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.DatabaseConnect
 import com.github.insanusmokrassar.AutoORM.core.drivers.databases.interfaces.DatabaseProvider
+import com.github.insanusmokrassar.IObjectKRealisations.JSONIObject
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
+import java.io.InputStreamReader
+import java.util.*
 import kotlin.reflect.KClass
 
 class ASQLDatabaseProvider(val parameters: IObject<Any>) : DatabaseProvider, SQLiteOpenHelper(parameters.get<Context>("context"), parameters.get<String>("name"), null, parameters.get<Int>("version")) {
@@ -36,4 +39,22 @@ class ASQLDatabaseProvider(val parameters: IObject<Any>) : DatabaseProvider, SQL
     override fun supportTable(modelClass: KClass<*>): Boolean {
         return true
     }
+}
+
+fun prepareConfig(assetPath: String, context: Context): IObject<Any> {
+    val configScanner = Scanner(context.assets.open(assetPath))
+    val configBuilder = StringBuilder()
+    while (configScanner.hasNext()) {
+        configBuilder.append("${configScanner.nextLine()}\n")
+    }
+    val params = JSONIObject(configBuilder.toString())
+    val databases = params.get<List<Any>>("databases")
+    databases.filter {
+        it is IObject<*> && it.keys().contains("context") && it.get("context")
+    }.forEach {
+        it as IObject<*>
+        val databaseProviderParams: IObject<Any> = it.get("params")
+        databaseProviderParams.put("context", context)
+    }
+    return params
 }

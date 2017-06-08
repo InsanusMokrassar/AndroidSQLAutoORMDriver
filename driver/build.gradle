@@ -39,6 +39,7 @@ dependencies {
     compile ('com.github.insanusmokrassar:AutoORM:0.7') {
         exclude group: 'com.intellij', module: 'annotations'
     }
+    compile 'com.github.insanusmokrassar:IObjectKRealisations:1.0'
     testCompile 'junit:junit:4.12'
 }
 
