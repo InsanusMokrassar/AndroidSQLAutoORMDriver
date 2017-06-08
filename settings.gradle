@@ -1,1 +1,1 @@
-include ':AndroidSQLAutoORMDriver'
+include ':app', ':AndroidSQLORMDriver'

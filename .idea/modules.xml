@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidSQLAutoORMDriver/AndroidSQLAutoORMDriver-AndroidSQLAutoORMDriver.iml" filepath="$PROJECT_DIR$/AndroidSQLAutoORMDriver/AndroidSQLAutoORMDriver-AndroidSQLAutoORMDriver.iml" />
-      <module fileurl="file://$PROJECT_DIR$/private-AndroidSQLAutoORMDriver.iml" filepath="$PROJECT_DIR$/private-AndroidSQLAutoORMDriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidSQLAutoORMDriver.iml" filepath="$PROJECT_DIR$/AndroidSQLAutoORMDriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidSQLORMDriver/AndroidSQLORMDriver.iml" filepath="$PROJECT_DIR$/AndroidSQLORMDriver/AndroidSQLORMDriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
