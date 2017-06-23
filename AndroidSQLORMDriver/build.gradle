@@ -39,6 +39,9 @@ dependencies {
         exclude group: 'com.intellij', module: 'annotations'
     }
     compile 'com.github.insanusmokrassar:IObjectKRealisations:1.0'
+    compile ('com.linkedin.dexmaker:dexmaker-mockito:2.2.0') {
+        exclude group: 'org.mockito'
+    }
     testCompile 'junit:junit:4.12'
 }
 
