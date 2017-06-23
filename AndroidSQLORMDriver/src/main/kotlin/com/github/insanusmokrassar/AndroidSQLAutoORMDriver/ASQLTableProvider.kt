@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import com.github.insanusmokrassar.AutoORM.core.asSQLString
+import com.github.insanusmokrassar.AutoORM.core.compilers.OperationsCompiler
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.SearchQuery
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.abstracts.AbstractTableProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.filters.Filter
@@ -119,9 +120,11 @@ private val operations = mapOf(
 class ASQLTableProvider<M : Any, O : M>(
         modelClass: KClass<M>,
         operationsClass: KClass<in O>,
+        operationsCompiler: OperationsCompiler,
         val roDB: SQLiteDatabase,
         val woDB: SQLiteDatabase) :
         AbstractTableProvider<M, O>(
+                operationsCompiler,
                 modelClass,
                 operationsClass) {
 
@@ -184,8 +187,9 @@ fun compilePaging(query: SearchQuery): String? {
 
 fun valuesToContentValues(values: Map<KProperty<*>, Any>): ContentValues {
     val cv = ContentValues()
-    values.forEach {
-        prop, value ->
+    values.keys.forEach {
+        val prop = it
+        val value = values[prop]!!
         when(value::class) {
             Boolean::class -> cv.put(prop.name, value as Boolean)
             Int::class -> cv.put(prop.name, value as Int)

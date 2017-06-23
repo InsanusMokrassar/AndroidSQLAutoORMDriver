@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.*
+import com.github.insanusmokrassar.AutoORM.core.compilers.OperationsCompiler
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.ConnectionProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.TableProvider
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
@@ -60,9 +61,12 @@ class ASQLConnectionProvider(
         Log.i(this::class.simpleName, "For some of reason was called onUpgrade with old versiont $oldVersion and new version $newVersion")
     }
 
-    override fun <M : Any, O : M> getTableProvider(modelClass: KClass<M>, operationsClass: KClass<in O>): TableProvider<M, O> {
+    override fun <M : Any, O : M> getTableProvider(
+            operationsCompiler: OperationsCompiler,
+            modelClass: KClass<M>,
+            operationsClass: KClass<in O>): TableProvider<M, O> {
         createTableIfNotExist(modelClass, woDB)
-        return ASQLTableProvider(modelClass, operationsClass, roDB, woDB)
+        return ASQLTableProvider(modelClass, operationsClass, operationsCompiler, roDB, woDB)
     }
 }
 
