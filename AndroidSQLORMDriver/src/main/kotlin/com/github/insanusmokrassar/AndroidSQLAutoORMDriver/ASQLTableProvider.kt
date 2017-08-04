@@ -3,10 +3,10 @@ package com.github.insanusmokrassar.AndroidSQLAutoORMDriver
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import com.github.insanusmokrassar.AutoORM.core.asSQLString
-import com.github.insanusmokrassar.AutoORM.core.compilers.OperationsCompiler
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.SearchQuery
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.abstracts.AbstractTableProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.filters.Filter
+import com.github.insanusmokrassar.AutoORM.core.generators.RealisationsGenerator
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
@@ -120,11 +120,11 @@ private val operations = mapOf(
 class ASQLTableProvider<M : Any, O : M>(
         modelClass: KClass<M>,
         operationsClass: KClass<in O>,
-        operationsCompiler: OperationsCompiler,
+        generator: RealisationsGenerator,
         val roDB: SQLiteDatabase,
         val woDB: SQLiteDatabase) :
         AbstractTableProvider<M, O>(
-                operationsCompiler,
+                generator,
                 modelClass,
                 operationsClass) {
 
