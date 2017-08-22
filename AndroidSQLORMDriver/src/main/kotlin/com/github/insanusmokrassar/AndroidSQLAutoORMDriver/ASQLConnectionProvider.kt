@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.github.insanusmokrassar.AutoORM.core.*
+import com.github.insanusmokrassar.AutoORM.core.compilers.OperationsCompiler
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.ConnectionProvider
 import com.github.insanusmokrassar.AutoORM.core.drivers.tables.interfaces.TableProvider
-import com.github.insanusmokrassar.AutoORM.core.generators.RealisationsGenerator
 import com.github.insanusmokrassar.iobjectk.interfaces.IObject
 import kotlin.reflect.KClass
 
@@ -62,11 +62,11 @@ class ASQLConnectionProvider(
     }
 
     override fun <M : Any, O : M> getTableProvider(
-            generator: RealisationsGenerator,
+            operationsCompiler: OperationsCompiler,
             modelClass: KClass<M>,
             operationsClass: KClass<in O>): TableProvider<M, O> {
         createTableIfNotExist(modelClass, woDB)
-        return ASQLTableProvider(modelClass, operationsClass, generator, roDB, woDB)
+        return ASQLTableProvider(modelClass, operationsClass, operationsCompiler, roDB, woDB)
     }
 }
 

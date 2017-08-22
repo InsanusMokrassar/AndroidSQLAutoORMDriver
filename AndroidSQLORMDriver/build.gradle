@@ -3,16 +3,16 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 
 group 'com.github.insanusmokrassar'
-version = 8
+version = '1.0'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
-        versionCode project.version
-        versionName "${project.version / 10}"
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,8 +34,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "com.android.support:appcompat-v7:26.0.0-alpha1"
-    compile ("com.github.insanusmokrassar:AutoORM:${project.version / 10}") {
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile ('com.github.insanusmokrassar:AutoORM:0.7') {
         exclude group: 'com.intellij', module: 'annotations'
     }
     compile 'com.github.insanusmokrassar:IObjectKRealisations:1.0'
@@ -50,7 +50,7 @@ install {
         pom.project {
             group project.group
             artifactId project.name
-            version "${project.version / 10}"
+            version project.version
         }
     }
 }
