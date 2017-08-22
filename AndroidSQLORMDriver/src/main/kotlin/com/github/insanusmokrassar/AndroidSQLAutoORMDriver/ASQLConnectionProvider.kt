@@ -39,7 +39,7 @@ val nativeTypesMap = mapOf(
 )
 
 class ASQLConnectionProvider(
-        val parameters: IObject<Any>): ConnectionProvider, SQLiteOpenHelper(parameters.get<Context>("context"), parameters.get<String>("name"), null, parameters.get<Int>("version"))  {
+        val parameters: IObject<Any>): ConnectionProvider, SQLiteOpenHelper(parameters.get(contextField), parameters.get("name"), null, parameters.get("version"))  {
 
     val roDB = readableDatabase
     val woDB = readableDatabase

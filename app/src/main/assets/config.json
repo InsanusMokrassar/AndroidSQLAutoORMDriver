@@ -1,0 +1,25 @@
+{
+  "drivers": [
+    {
+      "name": "Common",
+      "classpath": "com.github.insanusmokrassar.AndroidSQLAutoORMDriver.ASQLDatabaseProvider",
+      "config": {}
+    }
+  ],
+  "databases": [
+    {
+      "name": "Example",
+      "driver": "Common",
+      "config": {
+        "context": "",
+        "name": "first",
+        "version": 1
+      },
+      "connections": 1
+    }
+  ],
+  "classesCompiler": {
+    "classpath": "com.github.insanusmokrassar.AndroidSQLAutoORMDriver.DexMakerBasedClassCompiler",
+    "config": "context"
+  }
+}
