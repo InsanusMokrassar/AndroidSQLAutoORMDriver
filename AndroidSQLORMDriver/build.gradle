@@ -29,19 +29,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile ('com.github.insanusmokrassar:AutoORM:0.9') {
+    compile('com.github.insanusmokrassar:AutoORM:0.9') {
         exclude group: 'com.intellij', module: 'annotations'
     }
     compile 'com.github.insanusmokrassar:IObjectKRealisations:1.0'
-    compile ('com.linkedin.dexmaker:dexmaker-mockito:2.2.0') {
-        exclude group: 'org.mockito'
-    }
-    testCompile 'junit:junit:4.12'
+    compile('com.google.dexmaker:dexmaker:1.2')
 }
 
 install {

@@ -11,7 +11,7 @@
       "name": "Example",
       "driver": "Common",
       "config": {
-        "context": "",
+        "context": "context",
         "name": "first",
         "version": 1
       },
